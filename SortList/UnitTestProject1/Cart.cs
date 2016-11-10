@@ -55,7 +55,7 @@ namespace UnitTestProject1
                 return false;
             if (x.Zip(y, (l, r) => l.Finish.Equals(r.Finish, StringComparison.InvariantCultureIgnoreCase)
               && l.Start.Equals(r.Start, StringComparison.InvariantCultureIgnoreCase))
-              .All(z => z == true))
+              .All(z => z))
                 return true;
             return false;
         }
