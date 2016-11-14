@@ -52,6 +52,7 @@ namespace FirsPurchase
                 db.SaveChanges();
             }
         }
+
         public DbSet<Sale> Sales { get; set; }
     }
     class Program
