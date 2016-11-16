@@ -21,23 +21,21 @@ namespace SortList
         /// <returns>Отсортированные карточки или InvalidOperationExecption если список зациклен</returns>
         public static IEnumerable<Cart> SortCart(IEnumerable<Cart> carts)
         {
+            int cartsCount = carts.Count();
             var dictionary = carts.ToDictionary(x => x.Start);
-            var linkedList = new LinkedList<Cart>(carts);
 
             var toarr = dictionary.Select(x => x.Value.Finish);
             string start = dictionary.Keys.Except(toarr).Single();
 
-            var firstCard = dictionary[start];
-            yield return firstCard;
+            var firstCart = dictionary[start];
+            yield return firstCart;
 
-            string next = firstCard.Finish;
-            linkedList.Remove(firstCard);
-
-            while (linkedList.Count > 0)
+            string next = firstCart.Finish;
+                        
+            for (int currentCount = 1;  currentCount<cartsCount;++currentCount)
             {
                 var nextCard = dictionary[next];
                 next = nextCard.Finish;
-                linkedList.Remove(nextCard);
                 yield return nextCard;
             }
             yield break;
