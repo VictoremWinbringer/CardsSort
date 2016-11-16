@@ -15,24 +15,24 @@ namespace UnitTestProject1
         public void Sort()
         {
             // Arrange
-            Cart[] m = new Cart[]
+            Card[] m = new Card[]
             {
-                new Cart {Start ="Мельбурн", Finish="Кельн" },
-                new Cart { Start="Москва" , Finish="Париж" },
-                 new Cart { Start="Кельн" , Finish="Москва" }
+                new Card {Start ="Мельбурн", Finish="Кельн" },
+                new Card { Start="Москва" , Finish="Париж" },
+                 new Card { Start="Кельн" , Finish="Москва" }
             };
 
             // Act
-            var c = Cart.SortCart(m);
+            var c = m.SortCard();
 
             // Assert
             Assert.IsNotNull(c);
-            Assert.IsTrue( isEqual( c.ToArray(), new Cart[]
+            Assert.IsTrue( isEqual( c.ToArray(), new Card[]
             {
-                new Cart {Start ="Мельбурн", Finish="Кельн" },
+                new Card {Start ="Мельбурн", Finish="Кельн" },
 
-                 new Cart { Start="Кельн" , Finish="Москва" },
-                new Cart { Start="Москва" , Finish="Париж" }
+                 new Card { Start="Кельн" , Finish="Москва" },
+                new Card { Start="Москва" , Finish="Париж" }
             }));
 
             //Assert.AreEqual(c.ToArray(), new Cart[]
@@ -49,7 +49,7 @@ namespace UnitTestProject1
         /// <param name="x"> Левый массив для сравнения</param>
         /// <param name="y">Правый массив для сравнения</param>
         /// <returns> true если массивы равны false если они не равны</returns>
-        public bool isEqual(Cart[] x, Cart[] y)
+        public bool isEqual(Card[] x, Card[] y)
         {
             if (x.Length != y.Length)
                 return false;

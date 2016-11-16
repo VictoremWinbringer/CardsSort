@@ -6,33 +6,27 @@ using System.Threading.Tasks;
 
 namespace SortList
 {
-    /// <summary>
-    /// Объектное представление карточки
-    /// </summary>
-    public class Cart
+    public static class CardSorter
     {
-        public string Start { get; set; }
-        public string Finish { get; set; }
-
         /// <summary>
-        /// Сортирует карточки за O(n)
+        /// Сортирует карточки за O(n) ВНИМАНИЕ: Имеет отложенное время выполнения.
         /// </summary>
-        /// <param name="carts">Список карточек</param>
+        /// <param name="cards">Список карточек</param>
         /// <returns>Отсортированные карточки или InvalidOperationExecption если список зациклен</returns>
-        public static IEnumerable<Cart> SortCart(IEnumerable<Cart> carts)
+        public static IEnumerable<Card> SortCard(this IEnumerable<Card> cards)
         {
-            int cartsCount = carts.Count();
-            var dictionary = carts.ToDictionary(x => x.Start);
+            int cardsCount = cards.Count();
+            var dictionary = cards.ToDictionary(x => x.Start);
 
             var toarr = dictionary.Select(x => x.Value.Finish);
             string start = dictionary.Keys.Except(toarr).Single();
 
-            var firstCart = dictionary[start];
-            yield return firstCart;
+            var firstCard = dictionary[start];
+            yield return firstCard;
 
-            string next = firstCart.Finish;
-                        
-            for (int currentCount = 1;  currentCount<cartsCount;++currentCount)
+            string next = firstCard.Finish;
+
+            for (int currentCount = 1; currentCount < cardsCount; ++currentCount)
             {
                 var nextCard = dictionary[next];
                 next = nextCard.Finish;
@@ -41,24 +35,32 @@ namespace SortList
             yield break;
         }
     }
+    /// <summary>
+    /// Объектное представление карточки
+    /// </summary>
+    public class Card
+    {
+        public string Start { get; set; }
+        public string Finish { get; set; }       
+    }
 
     class Program
     {
         
         static void Main(string[] args)
         {
-            Cart[] m = new Cart[]
+            Card[] m = new Card[]
             {
-               new Cart {Start ="B", Finish="C" },
-                new Cart { Start="A" , Finish="B" },
-                 new Cart { Start="J" , Finish="K" },
-                 new Cart { Start="C" , Finish="D" },
-                 new Cart { Start="I" , Finish="J" },
-                 new Cart { Start="D" , Finish="E" },
-                 new Cart { Start="H" , Finish="I" },
-                 new Cart { Start="E" , Finish="F" },
-                 new Cart { Start="G" , Finish="H" },
-                 new Cart { Start="F" , Finish="G" }
+               new Card {Start ="B", Finish="C" },
+                new Card { Start="A" , Finish="B" },
+                 new Card { Start="J" , Finish="K" },
+                 new Card { Start="C" , Finish="D" },
+                 new Card { Start="I" , Finish="J" },
+                 new Card { Start="D" , Finish="E" },
+                 new Card { Start="H" , Finish="I" },
+                 new Card { Start="E" , Finish="F" },
+                 new Card { Start="G" , Finish="H" },
+                 new Card { Start="F" , Finish="G" }
             };
 
             foreach (var i in m)
@@ -68,7 +70,8 @@ namespace SortList
 
             Console.WriteLine(new string('-', 30));
 
-            var c = Cart.SortCart(m);
+            var c = m.SortCard();
+
             foreach (var i in c)
             {
                 Console.WriteLine($"{i.Start} -> {i.Finish}");
