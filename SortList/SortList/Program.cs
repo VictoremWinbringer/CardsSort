@@ -19,7 +19,7 @@ namespace SortList
         /// </summary>
         /// <param name="carts">Список карточек</param>
         /// <returns>Отсортированные карточки или InvalidOperationExecption если список зациклен</returns>
-        public static IEnumerable<Cart> SortCart(Cart[] carts)
+        public static IEnumerable<Cart> SortCart(IEnumerable<Cart> carts)
         {
             var dictionary = carts.ToDictionary(x => x.Start);
             var linkedList = new LinkedList<Cart>(carts);
