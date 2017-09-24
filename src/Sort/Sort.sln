@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sort", "Sort\Sort.csproj", "{A51DF177-C737-4928-B46E-856C11A31CC4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{55255C09-556F-42AF-BD31-FBB88995C383}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BEE2D718-58A4-4ECB-B7D3-C561F61A9AD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortTest", "..\..\tests\SortTest\SortTest.csproj", "{DFA2669E-D739-459A-91FD-DA8FFA695E3E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A51DF177-C737-4928-B46E-856C11A31CC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A51DF177-C737-4928-B46E-856C11A31CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A51DF177-C737-4928-B46E-856C11A31CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A51DF177-C737-4928-B46E-856C11A31CC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFA2669E-D739-459A-91FD-DA8FFA695E3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA2669E-D739-459A-91FD-DA8FFA695E3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA2669E-D739-459A-91FD-DA8FFA695E3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA2669E-D739-459A-91FD-DA8FFA695E3E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A51DF177-C737-4928-B46E-856C11A31CC4} = {55255C09-556F-42AF-BD31-FBB88995C383}
+		{DFA2669E-D739-459A-91FD-DA8FFA695E3E} = {BEE2D718-58A4-4ECB-B7D3-C561F61A9AD3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1BA90F55-182E-4E41-8736-EE3C3065F61F}
+	EndGlobalSection
+EndGlobal
