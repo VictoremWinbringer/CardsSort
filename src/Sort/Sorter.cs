@@ -14,8 +14,7 @@ namespace Sort
         {
             var dictionary = cards.ToDictionary(x => x.Start);
 
-            string currentCity = FindStartingCity(dictionary.Values.Select(c => c.Start)
-                , dictionary.Values.Select(c => c.Finish));
+            string currentCity = FindStartingCity(dictionary.Values);
 
             int cardsCount = dictionary.Count;
 
@@ -27,6 +26,11 @@ namespace Sort
 
                 yield return currentCard;
             }
+        }
+
+        private string FindStartingCity(IEnumerable<Card> cards)
+        {
+            return FindStartingCity(cards.Select(c => c.Start), cards.Select(c => c.Finish));
         }
 
         private string FindStartingCity(IEnumerable<string> starts, IEnumerable<string> finishes)

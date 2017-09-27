@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Sort;
 using Xunit;
+using Xunit.Sdk;
 
 namespace SortTest
 {
@@ -22,6 +23,14 @@ namespace SortTest
             Assert.NotEmpty(result);
 
             Assert.True(isEqual(result, GetExpected()));
+        }
+
+        [Fact]
+        public void Sort_Null_Thow_Exception()
+        {
+            var sorter = new Sorter();
+
+            Assert.Throws<ArgumentNullException>(() => sorter.SortCard(null).ToArray());
         }
 
         private Card[] GetActual()
