@@ -26,11 +26,78 @@ namespace SortTest
         }
 
         [Fact]
-        public void Sort_Null_Thow_Exception()
+        public void Thow_Argument_Null_Exception()
         {
             var sorter = new Sorter();
 
             Assert.Throws<ArgumentNullException>(() => sorter.SortCard(null).ToArray());
+        }
+
+        [Fact]
+        public void Throw__ArgumentException_Exception_If_Input_Has_Duplicates()
+        {
+            var sorter = new Sorter();
+
+            Assert.Throws<ArgumentException>(() => sorter.SortCard(new[]
+            {
+                new Card
+                {
+                    Start = "A",
+                    Finish = "B"
+                },
+                new Card
+                {
+                    Start = "A",
+                    Finish = "B"
+                }
+
+            }).ToArray());
+        }
+
+        [Fact]
+        public void Throw_Invalid_Operation_Exception_If_Input_Has_Circle()
+        {
+            var sorter = new Sorter();
+
+            Assert.Throws<InvalidOperationException>(() => sorter.SortCard(new[]
+            {
+                new Card
+                {
+                    Start = "A",
+                    Finish = "B"
+                },
+                new Card
+                {
+                    Start = "B",
+                    Finish = "C"
+                },new Card
+                {
+                    Start = "C",
+                    Finish = "A"
+                },
+
+            }).ToArray());
+        }
+
+        [Fact]
+        public void Throw__Invalid_Operation_Exception_If_Input_Has_Break()
+        {
+            var sorter = new Sorter();
+
+            Assert.Throws<InvalidOperationException>(() => sorter.SortCard(new[]
+            {
+                new Card
+                {
+                    Start = "A",
+                    Finish = "B"
+                },
+                new Card
+                {
+                    Start = "C",
+                    Finish = "D"
+                }
+
+            }).ToArray());
         }
 
         private Card[] GetActual()

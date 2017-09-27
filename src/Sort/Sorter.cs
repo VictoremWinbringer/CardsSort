@@ -6,7 +6,7 @@ namespace Sort
     public sealed class Sorter : ISorter
     {
         /// <summary>
-        /// Sorts the cards for the O (n)
+        /// Sorts the cards for the O (n^2)
         /// </summary>
         /// <param name="cards"><see cref="Card"/> list</param>
         /// <returns>sorted cards</returns>
