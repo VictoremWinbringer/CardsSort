@@ -12,24 +12,26 @@ namespace Sort
         /// <returns>sorted cards</returns>
         public IEnumerable<Card> SortCard(IEnumerable<Card> cards)
         {
-            int cardsCount = cards.Count();
             var dictionary = cards.ToDictionary(x => x.Start);
 
-            var toarr = dictionary.Select(x => x.Value.Finish);
-            string start = dictionary.Keys.Except(toarr).Single();
+            string currentCity = FindStartingCity(dictionary.Values.Select(c => c.Start)
+                , dictionary.Values.Select(c => c.Finish));
 
-            var firstCard = dictionary[start];
-            yield return firstCard;
+            int cardsCount = dictionary.Count;
 
-            string next = firstCard.Finish;
-
-            for (int currentCount = 1; currentCount < cardsCount; ++currentCount)
+            for (int currentCount = 0; currentCount < cardsCount; ++currentCount)
             {
-                var nextCard = dictionary[next];
-                next = nextCard.Finish;
-                yield return nextCard;
+                var currentCard = dictionary[currentCity];
+
+                currentCity = currentCard.Finish;
+
+                yield return currentCard;
             }
-            yield break;
+        }
+
+        private string FindStartingCity(IEnumerable<string> starts, IEnumerable<string> finishes)
+        {
+            return starts.Except(finishes).Single();
         }
     }
 }
